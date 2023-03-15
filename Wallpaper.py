@@ -66,21 +66,26 @@ def exit_program():
     window.destroy()
     sys.exit(0)
 
+def stop_program():
+    global stop_flag
+    stop_flag = True
 
 window = tk.Tk()
 custom_font = font.Font(family="Helvetica", size=24, weight="bold")
 normal_font = font.Font(family="Helvetica", size=12, weight="normal")
-window.geometry("400x300")
+window.geometry("400x350")
 
 title = tk.Label(text="WALLPAPER CHANGER\n******************\n", font=custom_font)
-pre_info = tk.Label(text="Choose a folder full with images", font= normal_font)
+pre_info = tk.Label(text="Choose a folder full with images\nTo exit click Stop>Restart>Exit", font= normal_font)
 title.pack()
 pre_info.pack()
 button = tk.Button(window, text="Open Folder", command=count_items)
 button_restart = tk.Button(window,text="Restart", command=restart_program)
 button_exit = tk.Button(window,text="Exit", command=exit_program)
+button_stop = tk.Button(window,text="Stop", command=stop_program)
 button.pack()
 button_restart.pack()
+button_stop.pack()
 button_exit.pack()
 
 window.mainloop()
