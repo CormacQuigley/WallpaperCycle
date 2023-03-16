@@ -6,6 +6,11 @@ from tkinter import font
 import os
 import sys
 import threading
+import customtkinter
+
+
+customtkinter.set_appearance_mode("dark")
+customtkinter.set_default_color_theme("green")
 
 stop_flag = False
 background_thread = None
@@ -70,22 +75,25 @@ def stop_program():
     global stop_flag
     stop_flag = True
 
-window = tk.Tk()
-custom_font = font.Font(family="Helvetica", size=24, weight="bold")
+window = customtkinter.CTk()
+custom_font = customtkinter.CTkFont(family="Helvetica", size=24, weight="bold")
 normal_font = font.Font(family="Helvetica", size=12, weight="normal")
 window.geometry("400x350")
 
-title = tk.Label(text="WALLPAPER CHANGER\n******************\n", font=custom_font)
-pre_info = tk.Label(text="Choose a folder full with images\nTo exit click Stop>Restart>Exit", font= normal_font)
-title.pack()
-pre_info.pack()
-button = tk.Button(window, text="Open Folder", command=count_items)
-button_restart = tk.Button(window,text="Restart", command=restart_program)
-button_exit = tk.Button(window,text="Exit", command=exit_program)
-button_stop = tk.Button(window,text="Stop", command=stop_program)
-button.pack()
-button_restart.pack()
-button_stop.pack()
-button_exit.pack()
+title = customtkinter.CTkLabel(window,text="WALLPAPER CHANGER", font=custom_font)
+pre_info = customtkinter.CTkLabel(window,text="Choose a folder full with images\nTo exit click Stop>Restart>Exit")
+title.pack(pady=10)
+pre_info.pack(pady=10)
+button = customtkinter.CTkButton(window, text="Open Folder", command=count_items)
+button_restart = customtkinter.CTkButton(window,text="Restart", command=restart_program)
+button_exit = customtkinter.CTkButton(window,text="Exit", command=exit_program)
+button_stop = customtkinter.CTkButton(window,text="Stop", command=stop_program)
+button.pack(pady=10)
+
+button_restart.pack(pady=10)
+
+button_stop.pack(pady=10)
+
+button_exit.pack(pady=10)
 
 window.mainloop()
